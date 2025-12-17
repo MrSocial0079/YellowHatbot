@@ -1,104 +1,98 @@
 # YellowHatBot – Autonomous Marking Robot (Prototype)
 
-## Project Overview
-YellowHatBot is a small-scale autonomous robot prototype designed to demonstrate **basic path-based marking** using simple hardware and Python-based control.  
-The robot uses **two servos** (head and pencil) and an **ultrasonic sensor** to follow predefined paths derived from SVG files converted into grid-based JSON coordinates.  
-The project focuses on feasibility, integration, and foundational robotics concepts rather than full autonomy.
+## Overview
+YellowHatBot is a small-scale robotics prototype that demonstrates **basic path-based marking** using simple hardware and Python control on a **Raspberry Pi 3**.  
+The robot uses **two servos** (head and pencil) and an **ultrasonic sensor** to execute predefined paths derived from **SVG files converted into JSON coordinates**.  
+This project focuses on **foundational robotics integration**, not full autonomy.
 
 ---
 
-## What This Project Does
-- Executes predefined paths extracted from SVG files
-- Controls a pencil/marker using a servo mechanism
-- Uses ultrasonic sensing for basic obstacle detection
-- Runs entirely on a Raspberry Pi 3 using Python and Jupyter notebooks
+## Problem & Significance
+Manual pavement and parking-lot marking is labor-intensive and inconsistent.  
+This project explores whether a **low-cost robotic system** can automate simple marking tasks using minimal hardware and software complexity.
 
 ---
 
-## What This Project Does NOT Do
-- No full ROS implementation
-- No sensor fusion or localization (EKF, SLAM, odometry)
-- No camera-based navigation
-- No closed-loop motor control
-- No real-time map updates
-
-This project is a **proof-of-concept prototype**, not an industrial system.
+## Course Concepts Applied
+- Coordinate mapping and spatial reasoning  
+- Servo-based actuator control  
+- Sensor-based obstacle detection  
+- Discrete path planning (SVG → JSON)  
+- Hardware–software integration  
 
 ---
 
-## Hardware Used
-- Raspberry Pi 3
-- GoPiGo robot base
-- 2 Servo motors (head, pencil)
-- Ultrasonic distance sensor
-- 9.6V 2000 mAh battery
-- microSD card (16GB+)
-
----
-
-## Software Used
-- Raspberry Pi OS (Raspbian)
-- Python 3
-- Jupyter Notebook
-- BalenaEtcher (for flashing OS)
+## System Summary
+**Hardware:** Raspberry Pi 3, GoPiGo base, 2 servos (head, pencil), ultrasonic sensor  
+**Software:** Raspberry Pi OS, Python 3, Jupyter Notebook  
+**Control:** Open-loop motion with timed commands and servo actuation  
 
 ---
 
 ## Libraries Used
-
-- **Python 3** – Core programming language  
-- **Jupyter Notebook** – Interactive code execution  
-- **NumPy** – Numerical calculations and arrays  
-- **Matplotlib** – Data and path visualization  
-- **json** – Path and coordinate storage  
-- **time** – Execution delays and timing  
-- **RPi.GPIO** – Raspberry Pi GPIO control  
-- **gpiozero** – Simplified hardware control  
-- **math** – Distance and angle calculations  
-- **os** – File and directory handling  
-- **sys** – System-level operations  
+- Python 3 – Core programming language  
+- Jupyter Notebook – Interactive execution  
+- NumPy – Numerical calculations  
+- Matplotlib – Path visualization  
+- json – Coordinate storage  
+- time – Execution timing  
+- RPi.GPIO – GPIO control  
+- gpiozero – Hardware abstraction  
+- math – Distance calculations  
 
 ---
 
-## System Architecture
-
-### Planning Layer
-- SVG file input
-- Grid overlay for scaling
-- Vector extraction
-- Conversion to JSON path coordinates
-
-### Control Layer
-- Servo actuation logic
-- Movement sequencing
-- Obstacle detection using ultrasonic sensor
-
-### Hardware Layer
-- Raspberry Pi GPIO
-- Servos and motors
-- Ultrasonic sensor
+## Implementation
+Paths are designed as **SVG files**, scaled using a grid, converted into **JSON coordinate lists**, and executed sequentially.  
+The pencil servo is lowered during marking and raised between segments.  
+An ultrasonic sensor continuously checks for obstacles and stops motion when a threshold distance is detected.
 
 ---
 
-## Installation & Setup Instructions
-
-### Step 1 – Install Raspberry Pi OS
-1. Download **Raspberry Pi OS (Raspbian)** image.
-2. Install **BalenaEtcher** on your computer.
-3. Insert microSD card.
-4. In BalenaEtcher:
-   - Select OS image  
-   - Select SD card  
-   - Flash  
-5. Safely eject SD card.
+## Limitations
+- No ROS implementation  
+- No localization, SLAM, or odometry  
+- No camera-based navigation  
+- Open-loop motion control  
+- Static environment assumption  
 
 ---
 
-### Step 2 – Boot Raspberry Pi 3
-1. Insert SD card into Raspberry Pi.
-2. Power on the Pi.
-3. Complete initial setup.
-4. Update system:
-```bash
-sudo apt update
-sudo apt upgrade -y
+## Results
+- Successfully executed predefined marking paths  
+- Reliable pencil servo control  
+- Functional ultrasonic obstacle detection  
+- Demonstrated end-to-end prototype operation  
+
+---
+
+## Future Work
+- Closed-loop motor control  
+- ROS-based architecture  
+- Improved mechanical stability  
+- Higher-performance compute platform  
+
+---
+
+## Team Contributions
+- Path planning and SVG-to-JSON conversion  
+- Hardware wiring and servo integration  
+- Control logic and testing  
+
+---
+
+## Setup (Brief)
+1. Flash Raspberry Pi OS using **BalenaEtcher**  
+2. Boot Raspberry Pi 3 and update system  
+3. Install Python, Jupyter, and required libraries  
+4. Copy `.ipynb` files to the Pi  
+5. Connect to GoPiGo Wi-Fi  
+6. Run notebooks using Jupyter  
+
+---
+
+## References
+- Raspberry Pi Documentation  
+- Python Official Documentation  
+- Ultrasonic Sensor Datasheets  
+- Course lecture materials  
